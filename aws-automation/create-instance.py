@@ -2,10 +2,14 @@ import boto3
 
 client = boto3.client('ec2')
 response = client.run_instances(
-     ImageId='ami-0f5ee92e2d63afc18',
-      InstanceType='t2.micro',
+     ImageId='ami-0989fb15ce71ba39e',
+      InstanceType='t3.micro',
       MaxCount=1,
       MinCount=1,
+      KeyName='automation',
+       SecurityGroupIds=[
+        'sg-065665d59b165b70e',
+    ],
     )
 
 for instances in response['Instances']:
